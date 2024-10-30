@@ -2,6 +2,9 @@
 
 name: "Create an empty Issue"
 on:
+  push:
+    branches-ignore:
+        - main
   schedule:
   - cron: "0 0 * * *"
 
@@ -29,6 +32,8 @@ jobs:
          git config --global user.email 'Daniel.Siegl@lieberlieber.com'
          Write-Output "setting remote state"
          git remote set-url origin https://x-access-token:${{secrets.PAT}}@github.com/${{ github.repository }}
+         Write-Output "pull"
+         git pull
          Write-Output "create commit"
          git commit --allow-empty -m "A commit a day keeps the doctor away"
          Write-Output "pushing new commit"

@@ -1,6 +1,6 @@
-# create an empty commit every day
+# create an empty commit every day using cronjob
 
-name: "Create an empty Issue"
+name: "Create an empty commit in a schedule"
 on:
   push:
     branches-ignore:

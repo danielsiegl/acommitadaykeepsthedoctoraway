@@ -36,6 +36,7 @@ jobs:
          Write-Output "pull"
          git pull
          Write-Output "create commit"
-         git commit --allow-empty -m "A commit a day keeps the doctor away"
+         $date = Get-Date -format "yyyyMMdd HH:mm"
+         git commit --allow-empty -m "$date A commit a day keeps the doctor away"
          Write-Output "pushing new commit"
          git push --force-with-lease

@@ -1,6 +1,6 @@
 # create an empty commit every day
 
-name: "Create an empty Issue"
+name: "Create an empty commit in a schedule"
 on:
   push:
     branches-ignore:

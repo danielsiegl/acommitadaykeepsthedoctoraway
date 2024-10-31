@@ -1,10 +1,10 @@
 # create an empty commit every day using cronjob
 
-name: "Create an empty commit in a schedule"
+name: "Create an empty commit on a schedule"
 on:
   push:
-    branches-ignore:
-        - main
+    branches-ignore: 
+        - main #important for testing - so if I want to test the script I push it to a branch.
   schedule:
   - cron: "0 0 * * *"
 

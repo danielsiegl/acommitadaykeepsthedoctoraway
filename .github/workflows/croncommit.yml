@@ -29,8 +29,8 @@ jobs:
       - name: Commit
         run: |
          Write-Output "set user config"
-         git config --global user.name 'Daniel Siegl'
-         git config --global user.email 'Daniel.Siegl@lieberlieber.com'
+         git config --global user.name '${{secrets.GITNAME}}'
+         git config --global user.email '${{secrets.GITEMAIL}}'
          Write-Output "setting remote state"
          git remote set-url origin https://x-access-token:${{secrets.PAT}}@github.com/${{ github.repository }}
          Write-Output "pull"

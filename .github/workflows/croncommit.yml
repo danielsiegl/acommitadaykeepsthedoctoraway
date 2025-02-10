@@ -8,6 +8,10 @@ on:
   schedule:
   - cron: "0 0 * * *"
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+
 jobs:
   commit:
     defaults:
@@ -24,7 +28,7 @@ jobs:
           lfs: true
           fetch-depth: 0
           persist-credentials: false
-          token: ${{secrets.PAT}} #If default token of automation user is used, no workflows for merge commit are triggered
+          token: ${{secrets.GITHUB_TOKEN}} #If default token of automation user is used, no workflows for merge commit are triggered
 
       - name: Commit
         run: |
@@ -32,7 +36,7 @@ jobs:
          git config --global user.name '${{secrets.GITNAME}}'
          git config --global user.email '${{secrets.GITEMAIL}}'
          Write-Output "setting remote state"
-         git remote set-url origin https://x-access-token:${{secrets.PAT}}@github.com/${{ github.repository }}
+         git remote set-url origin https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{ github.repository }}
          Write-Output "pull"
          git pull
          Write-Output "create commit"
